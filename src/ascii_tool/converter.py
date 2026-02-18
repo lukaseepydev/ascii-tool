@@ -9,13 +9,13 @@ def convert(img_path : str, width : int = 120):
     logger.info(f"Opening image '{img_path}...'")
 
     img = Image.open(img_path)
-    width, height = img.size
+    img_width, img_height = img.size
     logger.info("Converting image to grayscale...")
     img = img.convert("L")
 
-    new_width = 120
-    aspect_ratio = height / width
-    new_height = int(new_width * aspect_ratio * 0.55)
+    new_width = width
+    aspect_ratio = img_height / img_width
+    new_height = max(int(new_width * aspect_ratio * 0.55), 1)
 
     logger.info(f"Resizing image to {new_width} x {new_height}...")
 

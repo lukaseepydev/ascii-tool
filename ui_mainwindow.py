@@ -1,15 +1,12 @@
-from logging_config import setup_logging
-import logging
-from converter import convert
-import sys
-import argparse
+# -*- coding: utf-8 -*-
 
-setup_logging()
-
-logger = logging.getLogger(__name__)
-
-logger.info("Programm started!")
-
+################################################################################
+## Form generated from reading UI file 'layout.ui'
+##
+## Created by: Qt User Interface Compiler version 6.10.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
     QMetaObject, QObject, QPoint, QRect,
@@ -17,13 +14,10 @@ from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
 from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform, 
-    QIntValidator)
-from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLineEdit, QMainWindow,
-    QMenuBar, QPlainTextEdit, QPushButton, QSizePolicy,
-    QStatusBar, QVBoxLayout, QWidget, QFileDialog, QLabel)
-
-#UI class genrated from layout.ui
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QLineEdit,
+    QMainWindow, QMenuBar, QPlainTextEdit, QPushButton,
+    QSizePolicy, QStatusBar, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -107,60 +101,5 @@ class Ui_MainWindow(object):
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Convert", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Width:", None))
         self.width.setText(QCoreApplication.translate("MainWindow", u"120", None))
-  
+    # retranslateUi
 
-class MainWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
-
-        self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
-
-        font = QFont("Courier New")   # or "Consolas"
-        font.setStyleHint(QFont.Monospace)
-
-        self.ui.textBox.setFont(font)
-
-        self.ui.width.setValidator(QIntValidator(1, 99999))
-
-        self.ui.filePickButton.clicked.connect(self.select_file)
-        self.ui.pushButton.clicked.connect(self.clicked_convert)
-
-    def select_file(self):
-        file_path, _ = QFileDialog.getOpenFileName(
-            self,
-            "Pick File",
-            "",
-            "Images (*.png *.jpg *.jpeg)"
-        )
-
-        self.ui.lineEdit.setText(file_path)
-
-    def clicked_convert(self):
-        ascii_art = convert(self.ui.lineEdit.text(), int(self.ui.width.text()))
-        self.ui.textBox.setPlainText(ascii_art)
-
-def main():
-    parser = argparse.ArgumentParser(description="AsciiImg tool")
-    parser.add_argument("image", nargs="?", help="Path to image to convert")
-    parser.add_argument(
-        "-width", 
-        type=int, 
-        default=120, 
-        help="Width of the ASCII output (default: 80)"
-    )
-    args = parser.parse_args()
-
-    if not args.image:
-        # Launch GUI
-        app = QApplication(sys.argv)
-        window = MainWindow()
-        window.show()
-        sys.exit(app.exec())
-    else:
-        # Run CLI mode
-        ascii_art = convert(args.image, args.width)
-        print(ascii_art)
-
-if __name__ == "__main__":
-    main()
