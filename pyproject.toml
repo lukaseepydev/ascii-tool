@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ascii-tool"  # Unique name on PyPI
+name = "ascii-tool"
 version = "0.1.7"
 description = "A simple image to ascii converter"
 readme = "README.md"
@@ -30,4 +30,4 @@ urls = { "Github" = "https://github.com/lukaseepydev/ascii-tool" }
 ascii-tool = "ascii_tool.main:main"
 
 [tool.setuptools.packages.find]
-where = ["src"]   # or ["ascii_tool"] if no src folder
+where = ["src"]
