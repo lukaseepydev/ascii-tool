@@ -1,6 +1,6 @@
-from logging_config import setup_logging
+from ascii_tool.logging_config import setup_logging
 import logging
-from converter import convert
+from ascii_tool.converter import convert
 import sys
 import argparse
 
