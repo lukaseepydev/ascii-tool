@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ascii-tool"  # Unique name on PyPI
-version = "0.1.5"
+version = "0.1.7"
 description = "A simple image to ascii converter"
 readme = "README.md"
 authors = [
@@ -24,7 +24,7 @@ dependencies = [
     "pyside6"
 ]
 
-urls = { "Homepage" = "https://github.com/lukaseepydev/ascii-tool" }
+urls = { "Github" = "https://github.com/lukaseepydev/ascii-tool" }
 
 [project.scripts]
 ascii-tool = "ascii_tool.main:main"
