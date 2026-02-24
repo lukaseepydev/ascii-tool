@@ -6,7 +6,7 @@ ascii_symbols = [" ","-","•","+","=","#","@"]
 logger = logging.getLogger(__name__)
 
 def convert(img_path : str, width : int = 120):
-    logger.info(f"Opening image '{img_path}...'")
+    logger.info(f"Opening image '{img_path}'...")
 
     img = Image.open(img_path)
     img_width, img_height = img.size
