@@ -21,7 +21,8 @@ dependencies = [
     "logging",
     "pillow",
     "argparse",
-    "pyside6"
+    "pyside6",
+    "rich"
 ]
 
 urls = { "Github" = "https://github.com/lukaseepydev/ascii-tool" }
